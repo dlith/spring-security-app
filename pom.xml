@@ -2,16 +2,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.dzmitry</groupId>
-  <artifactId>spring-security-demo</artifactId>
+  <groupId>com.luv2code</groupId>
+  <artifactId>spring-security-demo-03-custom-login-form</artifactId>
   <version>1.0</version>
   <packaging>war</packaging>
 
-  <name>spring-security-demo</name>
+  <name>spring-security-demo-03-custom-login-form</name>
 
   <properties>
-    <springframework.version>5.0.2.RELEASE</springframework.version>
-    <springsecurity.version>5.0.0.RELEASE</springsecurity.version>
+    <springframework.version>5.3.22</springframework.version>
+    <springsecurity.version>5.7.3</springsecurity.version>
 
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
@@ -63,7 +63,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>4.13.1</version>
       <scope>test</scope>
     </dependency>
 
