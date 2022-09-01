@@ -10,7 +10,7 @@
     <hr>
 
     <p>
-        See your Brazil ... for our annual Leadership retreat!
+        See your in Brazil ... for our annual Leadership retreat!
         <br>
         Keep this trip a secret, don't tell the regular employees LOL :)
     </p>

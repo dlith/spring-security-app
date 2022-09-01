@@ -23,6 +23,11 @@
         (Only for Manager peeps)
     </p>
 
+    <p>
+        <a href="${pageContext.request.contextPath}/systems">Admin info</a>
+        (Only for Admin peeps)
+    </p>
+
     <hr>
     <p>Welcome to the company home page!</p>
 
