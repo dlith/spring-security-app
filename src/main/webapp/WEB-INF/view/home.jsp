@@ -17,16 +17,19 @@
     </p>
 
     <hr>
+    <security:authorize access="hasRole('MANAGER')">
+        <p>
+            <a href="${pageContext.request.contextPath}/leaders">LeaderShip Meeting</a>
+            (Only for Manager peeps)
+        </p>
+    </security:authorize>
 
-    <p>
-        <a href="${pageContext.request.contextPath}/leaders">LeaderShip Meeting</a>
-        (Only for Manager peeps)
-    </p>
-
-    <p>
-        <a href="${pageContext.request.contextPath}/systems">Admin info</a>
-        (Only for Admin peeps)
-    </p>
+    <security:authorize access="hasRole('ADMIN')">
+        <p>
+            <a href="${pageContext.request.contextPath}/systems">Admin info</a>
+            (Only for Admin peeps)
+        </p>
+    </security:authorize>
 
     <hr>
     <p>Welcome to the company home page!</p>
