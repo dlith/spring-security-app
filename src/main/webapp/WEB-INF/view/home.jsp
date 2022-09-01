@@ -9,8 +9,19 @@
 <body>
     <h2>Company Home Page</h2>
     <hr>
+    <p>
+        User: <security:authentication property="principal.username"/>
+        <br>
+        <br>
+        Role(s): <security:authentication property="principal.authorities"/>
+    </p>
 
-    User: <security:authentication property="principal.authorities"/>
+    <hr>
+
+    <p>
+        <a href="${pageContext.request.contextPath}/leaders">LeaderShip Meeting</a>
+        (Only for Manager peeps)
+    </p>
 
     <hr>
     <p>Welcome to the company home page!</p>

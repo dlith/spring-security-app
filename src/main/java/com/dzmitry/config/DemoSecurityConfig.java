@@ -26,13 +26,13 @@ public class DemoSecurityConfig {
         UserDetails mary = User.builder()
                 .username("mary")
                 .password("{noop}test123")
-                .roles("MANAGER")
+                .roles("EMPLOYEE","MANAGER")
                 .build();
 
         UserDetails susan = User.builder()
                 .username("susan")
                 .password("{noop}test123")
-                .roles("ADMIN")
+                .roles("EMPLOYEE", "ADMIN")
                 .build();
         
         return new InMemoryUserDetailsManager(john, mary, susan);  
@@ -42,11 +42,11 @@ public class DemoSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     		
         return http
-		.authorizeRequests(configurer ->
-			configurer
-				.anyRequest()
-				.authenticated())
-		
+        .authorizeRequests(configurer ->
+                configurer
+                        .antMatchers("/").hasRole("EMPLOYEE")
+                        .antMatchers("/leaders/**").hasRole("MANAGER")
+                        .antMatchers("/systems/**").hasRole("ADMIN"))
 		.formLogin(configurer ->
 			configurer
 				.loginPage("/showMyLoginPage")
