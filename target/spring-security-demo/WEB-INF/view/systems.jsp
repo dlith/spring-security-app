@@ -12,7 +12,7 @@
 <p>
     We know about trip to Brazil. Unbook the tickets :)
     <br>
-    Keep this trip a secret, don't tell the managers LOL :)
+    Keep this trip a secret, don't tell managers LOL :)
 </p>
 
 <a href="${pageContext.request.contextPath}/">Back to Home Page</a>
