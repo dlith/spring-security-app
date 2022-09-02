@@ -30,7 +30,7 @@
             (Only for Admin peeps)
         </p>
     </security:authorize>
-    
+
     <hr>
     <p>Welcome to the company home page!</p>
 
