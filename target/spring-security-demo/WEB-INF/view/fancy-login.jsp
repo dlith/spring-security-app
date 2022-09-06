@@ -90,9 +90,11 @@
             </div>
 
         </div>
-
+        <div>
+            <a href="${pageContext.request.contextPath}/register/showRegistrationForm"
+               class="btn btn-primary" role="button" aria-pressed="true">Register new User</a>
+        </div>
     </div>
-
 </div>
 
 </body>
