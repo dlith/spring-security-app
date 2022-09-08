@@ -1,9 +1,8 @@
 package com.dzmitry.validation;
 
 
-import jakarta.validation.Constraint;
-import jakarta.validation.Payload;
-
+import javax.validation.Constraint;
+import javax.validation.Payload;
 import java.lang.annotation.*;
 
 @Constraint(validatedBy = FieldMatchValidator.class)
@@ -19,7 +18,7 @@ public @interface FieldMatch {
     String first();
     String second();
 
-    @Target({ElementType.FIELD, ElementType.ANNOTATION_TYPE})
+    @Target({ ElementType.TYPE, ElementType.ANNOTATION_TYPE })
     @Retention(RetentionPolicy.RUNTIME)
     @Documented
     @interface List{
