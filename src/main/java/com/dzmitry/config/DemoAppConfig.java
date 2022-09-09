@@ -1,12 +1,15 @@
 package com.dzmitry.config;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import com.mysql.cj.xdevapi.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -14,6 +17,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
 import java.util.Objects;
+import java.util.Properties;
 import java.util.logging.Logger;
 
 @Configuration
@@ -69,7 +73,35 @@ public class DemoAppConfig {
 		int intPropVal = Integer.parseInt(propVal);
 		return intPropVal;
 	}
-	
+
+	private Properties getHibernateProperties() {
+
+		// set hibernate properties
+		Properties props = new Properties();
+
+		props.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
+		props.setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
+
+		return props;
+	}
+
+	@Bean
+	public LocalSessionFactoryBean sessionFactory(){
+
+		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+		sessionFactory.setDataSource(securityDataSource());
+		sessionFactory.setPackagesToScan(env.getProperty("hiberante.packagesToScan"));
+		sessionFactory.setHibernateProperties(getHibernateProperties());
+
+		return sessionFactory;
+	}
+
+	@Bean
+	public HibernateTransactionManager transactionManager() {
+		HibernateTransactionManager transactionManager = new HibernateTransactionManager();
+		transactionManager.setSessionFactory(sessionFactory().getObject());
+		return transactionManager;
+	}
 }
 
 

@@ -1,7 +1,9 @@
 package com.dzmitry.service;
 
+import com.dzmitry.dao.UserDAO;
 import com.dzmitry.entity.User;
 import com.dzmitry.user.CrmUser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
