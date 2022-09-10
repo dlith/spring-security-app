@@ -1,7 +1,8 @@
 package com.dzmitry.entity;
 
-import jakarta.persistence.*;
 import lombok.*;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "role")
@@ -13,7 +14,8 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(name = "id")
+    private Long id;
     @Column(name = "name")
-    private String nane;
+    private String name;
 }

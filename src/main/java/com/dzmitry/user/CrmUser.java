@@ -11,7 +11,6 @@ import javax.validation.constraints.Size;
 
 @Setter
 @Getter
-@NoArgsConstructor
 @FieldMatch.List({
         @FieldMatch(first = "password", second = "matchingPassword", message = "The password fields must match")
 })
@@ -42,4 +41,6 @@ public class CrmUser {
     @Size(min = 1, message = "is required")
     private String email;
 
+    public CrmUser() {
+    }
 }

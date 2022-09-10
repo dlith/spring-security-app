@@ -23,7 +23,13 @@ import javax.sql.DataSource;
 public class DemoSecurityConfig {
 
     @Autowired
+    public UserService userService;
+
+    @Autowired
     private DataSource securityDataSource;
+
+    @Autowired
+    private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
 
     @Bean
     public UserDetailsManager userDetailsManager(){
@@ -67,6 +73,7 @@ public class DemoSecurityConfig {
 			configurer
 				.loginPage("/showMyLoginPage")
 				.loginProcessingUrl("/authenticateTheUser")
+                .successHandler(customAuthenticationSuccessHandler)
 				.permitAll())
                 .logout(LogoutConfigurer::permitAll)
         .exceptionHandling(configurer ->
@@ -79,9 +86,6 @@ public class DemoSecurityConfig {
     public BCryptPasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
-
-    @Autowired
-    public UserService userService;
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider(){

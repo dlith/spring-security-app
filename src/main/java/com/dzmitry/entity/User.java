@@ -1,9 +1,10 @@
 package com.dzmitry.entity;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
@@ -15,9 +16,12 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    @Column(name = "user_name")
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "username")
     private String userName;
+
     @Column(name = "password")
     private String password;
     @Column(name = "first_name")
@@ -27,7 +31,7 @@ public class User {
     @Column(name = "email")
     private String email;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name="user_roles",
+    @JoinTable(name="users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )

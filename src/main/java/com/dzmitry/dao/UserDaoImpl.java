@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class UserDaoImpl implements UserDAO {
+public class UserDaoImpl implements UserDao {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -18,8 +18,8 @@ public class UserDaoImpl implements UserDAO {
 
         Session session = sessionFactory.getCurrentSession();
 
-        Query<User> query = session.createQuery("from User where userName:=username", User.class);
-        query.setParameter("username", username);
+        Query<User> query = session.createQuery("from User where userName=:uName", User.class);
+        query.setParameter("uName", username);
         User user = null;
 
         try{

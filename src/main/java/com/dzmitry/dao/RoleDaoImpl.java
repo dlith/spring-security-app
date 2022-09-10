@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class RoleDaoImpl implements RoleDAO {
+public class RoleDaoImpl implements RoleDao {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -17,7 +17,7 @@ public class RoleDaoImpl implements RoleDAO {
     public Role findByRoleName(String roleName) {
 
         Session session = sessionFactory.getCurrentSession();
-        Query<Role> query = session.createQuery("from Role where name:=roleName", Role.class);
+        Query<Role> query = session.createQuery("from Role where name=:roleName", Role.class);
         query.setParameter("roleName", roleName);
         Role role = null;
 
